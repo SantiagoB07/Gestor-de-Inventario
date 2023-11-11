@@ -44,7 +44,7 @@ class Almacen:
                 print(f"{clave.capitalize()}: {valor}")
             print("=" * 20)
 
-# Ejemplo de uso
+
 almacen = Almacen()
 almacen.agregar_producto(1, 'Producto1', 'Descripción del producto 1', 10, datetime.now())
 almacen.agregar_producto(2, 'Producto2', 'Descripción del producto 2', 15, datetime.now())
