@@ -11,6 +11,73 @@ class Producto():
         self.izquierda = None
         self.derecha = None
 
+
+"Pila"
+"""class Producto:
+    def __init__(self, Id, nombre, precio):
+        self.Id=Id
+        self.nombre=nombre
+        self.precio=precio
+
+
+class Pila:
+    def __init__(self):"
+        self.mLista=[]
+        
+    def insertar(self, valor):
+        self.mLista.append(valor)
+    
+    def remover(self):
+        self.mLista.pop()
+    
+    def ultimoElemento(self):
+        print(self.mLista[-1])
+    
+    def mostrarPila(self):
+        for x in self.mLista:
+            print(x)"""
+
+"""class Producto:
+    def __init__(self, Id, nombre, precio):
+        self.Id = Id
+        self.nombre = nombre
+        self.precio = precio
+
+
+class Pedido(Producto):
+    def __init__(self, Id, nombre, precio, nombre_cliente, direccion):
+        super().__init__(Id, nombre, precio)
+        self.nombre_cliente = nombre_cliente
+        self.direccion = direccion
+        
+
+class ColaPedidos:
+    def __init__(self):
+        self.items = []
+
+    def esta_vacia(self):
+        return len(self.items) == 0
+
+    def encolar(self, item):
+        self.items.insert(0, item)
+
+    def desencolar(self):
+        if self.esta_vacia():
+            return None
+        return self.items.pop()
+
+    def tamaño(self):
+        return len(self.items)
+
+    def ver_frente(self):
+        if self.esta_vacia():
+            return None
+        return self.items[-1]"""
+
+
+
+
+
 class Inventario:
     def __init__(self):
         self.raiz = None
