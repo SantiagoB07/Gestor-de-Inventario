@@ -12,14 +12,15 @@ class Producto():
         self.derecha = None"""
 
 
-"Pila"
+"Clase producto"
 class Producto:
     def __init__(self, Id, nombre, precio):
         self.Id=Id
         self.nombre=nombre
         self.precio=precio
+        self.categoria=categoria
 
-
+"Pila"
 class Pila:
     def __init__(self):"
         self.mLista=[]
@@ -38,13 +39,6 @@ class Pila:
             print(x)
 
 "cola"
-class Producto:
-    def __init__(self, Id, nombre, precio):
-        self.Id = Id
-        self.nombre = nombre
-        self.precio = precio
-
-
 class Pedido(Producto):
     def __init__(self, Id, nombre, precio, nombre_cliente, direccion):
         super().__init__(Id, nombre, precio)
@@ -76,10 +70,7 @@ class ColaPedidos:
         return self.items[-1]
 
 "tabla Hash"
-class Producto:
-    def __init__(self, id, nombre):
-        self.id = id
-        self.nombre = nombre
+
 
 
 class HashTable:
@@ -191,6 +182,8 @@ almacen.mostrar_inventario()
 almacen.modificar_producto(1, nombre='NuevoNombre', cantidad=20)
 
 print(almacen.obtener_producto(1))
+
+
 
 "Arbol"
 class Nodo:
