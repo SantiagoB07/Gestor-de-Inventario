@@ -1,4 +1,4 @@
-from django.db import models
+"""from django.db import models
 
 class Producto():
     def __init__(self, codigo, nombre, categoria,marca,stock,min_stock):
@@ -9,11 +9,11 @@ class Producto():
         self.stock = stock
         self.min_stock = min_stock
         self.izquierda = None
-        self.derecha = None
+        self.derecha = None"""
 
 
 "Pila"
-"""class Producto:
+class Producto:
     def __init__(self, Id, nombre, precio):
         self.Id=Id
         self.nombre=nombre
@@ -35,9 +35,10 @@ class Pila:
     
     def mostrarPila(self):
         for x in self.mLista:
-            print(x)"""
+            print(x)
 
-"""class Producto:
+"cola"
+class Producto:
     def __init__(self, Id, nombre, precio):
         self.Id = Id
         self.nombre = nombre
@@ -72,13 +73,127 @@ class ColaPedidos:
     def ver_frente(self):
         if self.esta_vacia():
             return None
-        return self.items[-1]"""
+        return self.items[-1]
+
+"tabla Hash"
+class Producto:
+    def __init__(self, id, nombre):
+        self.id = id
+        self.nombre = nombre
 
 
+class HashTable:
+    def __init__(self, size):
+        self.size = size
+        self.table = [None] * size
+        
+    def Hash_function(self, value): #Función Hash para calcular los índices
+        key = 0 
+        for i in range(0, len(value)):
+            key += ord(value[i])
+        return key % 127
+
+    def Insertar(self, value): #Insertar elementos a la tabla Hash
+        hash = self.Hash_function(value)
+        if self.table[hash] is None:
+            self.table[hash] = value
+            
+    def Buscar(self, value): #Buscar un valor en la tabla Hash
+        hash = self.Hash_function(value)
+        if self.table[hash] is None:
+            return None
+        else:
+            print(hex(id(self.table[hash]))) 
+        
+    def Eliminar(self, value): #Eliminar un elemento de la tabla Hash
+        hash = self.Hash_function(value)
+        if self.table[hash] is None:
+            print("No hay elementos con el valor", value)
+        else:
+            print("El elemento con el valor", value, "ha sido eliminado")
+            self.table[hash] is None
+            
+    def Mostrar_Todos(self): #Mostrar todos los elementos de la Tabla Hash
+        for i in range(len(self.table)):
+            if self.table[i] is not None:
+                print(hex(id(self.table[i])), self.table[i])
 
 
+"lista"
+class Proveedor:
+    def __init__(self, numero, id_producto):
+        self.numero = numero
+        self.id_producto = id_producto
 
-class Inventario:
+proveedor1 = Proveedor(numero=1, id_producto=101)
+proveedor2 = Proveedor(numero=2, id_producto=102)
+
+lista_proveedores = [proveedor1, proveedor2]
+
+for proveedor in lista_proveedores:
+    print(f"Número: {proveedor.numero}, ID del Producto: {proveedor.id_producto}")
+
+
+"almacen"
+from datetime import datetime
+
+class Almacen:
+    def __init__(self):
+        self.inventario = {}
+
+    def agregar_producto(self, codigo, nombre, descripcion, cantidad, fecha_llegada):
+        if codigo not in self.inventario:
+            self.inventario[codigo] = {
+                'nombre': nombre,
+                'descripcion': descripcion,
+                'cantidad': cantidad,
+                'fecha_llegada': fecha_llegada
+            }
+            print(f"Producto con código {codigo} agregado al inventario.")
+        else:
+            print(f"Ya existe un producto con el código {codigo} en el inventario. Use el método modificar_producto para actualizar la información.")
+
+    def modificar_producto(self, codigo, nombre=None, descripcion=None, cantidad=None, fecha_llegada=None):
+        if codigo in self.inventario:
+            if nombre is not None:
+                self.inventario[codigo]['nombre'] = nombre
+            if descripcion is not None:
+                self.inventario[codigo]['descripcion'] = descripcion
+            if cantidad is not None:
+                self.inventario[codigo]['cantidad'] = cantidad
+            if fecha_llegada is not None:
+                self.inventario[codigo]['fecha_llegada'] = fecha_llegada
+            print(f"Producto con código {codigo} modificado.")
+        else:
+            print(f"No hay ningún producto con el código {codigo} en el inventario. Use el método agregar_producto para añadirlo.")
+
+    def obtener_producto(self, codigo):
+        if codigo in self.inventario:
+            return self.inventario[codigo]
+        else:
+            print(f"No hay ningún producto con el código {codigo} en el inventario.")
+
+    def mostrar_inventario(self):
+        print("Inventario:")
+        for codigo, producto in self.inventario.items():
+            print(f"Código: {codigo}")
+            for clave, valor in producto.items():
+                print(f"{clave.capitalize()}: {valor}")
+            print("=" * 20)
+
+
+almacen = Almacen()
+almacen.agregar_producto(1, 'Producto1', 'Descripción del producto 1', 10, datetime.now())
+almacen.agregar_producto(2, 'Producto2', 'Descripción del producto 2', 15, datetime.now())
+
+almacen.mostrar_inventario()
+
+almacen.modificar_producto(1, nombre='NuevoNombre', cantidad=20)
+
+print(almacen.obtener_producto(1))
+
+
+"""class Inventario:
     def __init__(self):
         self.raiz = None
 
@@ -131,4 +246,4 @@ class Inventario:
             })
 
             # Recorrer el subárbol derecho
-            self._obtener_productos_recursivo(nodo.derecha, lista_productos)
+            self._obtener_productos_recursivo(nodo.derecha, lista_productos)"""
