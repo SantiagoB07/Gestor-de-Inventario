@@ -190,8 +190,6 @@ class Nodo:
     def _init_(self, Id):
         self.dato=dato
         self.arbol=["comida", "verdura", "fruta"]
-        self.baseV=["verdura"]#Añadir id de cada verdura
-        self.baseF=["fruta"]#Añadir id de cada fruta
       
     def insertar(self, raiz, categoria, nodo):
         if raiz.dato==categoria:
