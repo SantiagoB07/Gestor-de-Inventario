@@ -1,29 +1,30 @@
 {% extends "base_admin.html" %}
 
 {% block content %}
-  <h1>Catálogo de productos</h1>
+  <h1>Catálogo de ordenes completadas</h1>
   <table class="table table-hover" style="text-align:center;">
     {% if Productos %}
       <thead>
         <tr>
-          <th>Codigo</th>
-          <th>Nombre</th>
-          <th>Categoria</th>
-          <th>Marca</th>
-          <th>Stock</th>
-          <th>Stock minimo</th>
+          <th>Codigo producto</th>
+          <th>Nombre producto</th>
+          <th>Codigo proveedor</th>
+          <th>Nombre proveedor</th>
+          <th>Cantidad</th>
+          <th>Fecha de finalizacion</th>
           <th>Operaciones</th>
         </tr>
       </thead>
       <tbody>
         {% for Producto in Productos %}
           <tr>
-            <td>{{ Producto.codigo }}</td>
-            <td>{{ Producto.nombre }}</td>
-            <td>{{ Producto.categoria }}</td>
-            <td>{{ Producto.marca }}</td>
-            <td class="stock">{{ Producto.stock }}</td>
-            <td class="min_stock">{{ Producto.min_stock }}</td>
+            <td>{{ Producto.Producto }}</td>
+            <td>{{ Producto.nombre_producto }}</td>
+            <td>{{ Producto.Proveedor }}</td>
+            <td>{{ Producto.nombre_proveedor }}</td>
+            <td>{{ Producto.Cantidad }}</td>
+            <td>{{ Producto.fecha_hora}}</td>
+
             <td>
               <a href="http://localhost:8000/login/{{ Producto.id }}" class="btn btn-light">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -55,35 +56,9 @@
       </tbody>
     {% endif %}
   </table>
-  <script>
-    // Obtén todas las filas de la tabla
-    var rows = document.getElementsByTagName("tr");
-   
-    // Recorre todas las filas
-    for (var i = 0; i < rows.length; i++) {
-        // Obtén las celdas de stock y min_stock de la fila actual
-        var stockCell = rows[i].getElementsByClassName("stock")[0];
-        var minStockCell = rows[i].getElementsByClassName("min_stock")[0];
-        console.log(i);
-        console.log(stockCell);
-        console.log(minStockValue);
-        // Si las celdas existen...
-        if (stockCell && minStockCell) {
-            // Obtén los valores de las celdas
-            var stockValue = parseInt(stockCell.textContent);
-            var minStockValue = parseInt(minStockCell.textContent);
-
-            // Si el stock es menor que el stock mínimo...
-            if (stockValue < minStockValue) {
-                // Agrega la clase "celda-roja" a la celda de stock
-                stockCell.classList.add("celda-roja");
-            }
-        }
-    }
-</script>
   <div class="container">
     <div class="row">
-      <a href="http://127.0.0.1:8000/inventarioapp/nuevo_producto/" class="btn btn-info">Agregar producto</a>
+      <a href="http://localhost:8000/inventarioapp/ordenes/" class="btn btn-info">Orden pendiente</a>
     </div>
   </div>
 {% endblock %}
